@@ -1,0 +1,158 @@
+<nav id="sidebar">
+  <div class="sidebar-header">
+    <a href="#">
+      <p>recargar</p>
+      {{auth.loggedIn}}
+      <img src="" class="logo active d-none d-lg-block">
+    </a>
+  </div>
+
+  <ul class="list-unstyled components">
+    <li class="active">
+      <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+        <i class="fas fa-user"></i>
+        Inicio
+      </a>
+      <ul class="collapse list-unstyled" id="homeSubmenu">
+        <li routerLinkActive="active" *ngIf="!auth.loggedIn">
+          <a class="pointer" (click)="auth.login()">
+            Login
+            <span style="font-size:16px;" class="float-right hidden-xsd-none d-sm-blockd-none d-sm-block showopacity fas fa-sign-in-alt"></span>
+          </a>
+        </li>
+
+        <li routerLinkActive="active" *ngIf="auth.loggedIn">
+          <a class="pointer" (click)="auth.logout()">
+            Logout
+            <span style="font-size:16px;" class="float-right hidden-xsd-none d-sm-block showopacity fas fa-sign-out-alt"></span>
+          </a>
+        </li>
+      </ul>
+    </li>
+    <!-- Hipoteca -->
+    <li *ngIf="auth.loggedIn">
+      <a href="#hipotecaSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+        <i class="fas fa-hand-holding-usd"></i>
+        Hipoteca
+      </a>
+      <ul class="collapse list-unstyled" id="hipotecaSubmenu">
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" *ngIf="auth.loggedIn">
+          <a routerLink="/hipotecas/nuevo-registro" (click)="onSidenavClose()">
+            Crear Registro
+            <span style="font-size:16px;" class="float-right hidden-xsd-none d-sm-block showopacity fas fa-plus"></span>
+          </a>
+        </li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" *ngIf="auth.loggedIn">
+          <a routerLink="/hipotecas/listar-registros" (click)="onSidenavClose()">
+            Listar Registro
+            <span style="font-size:16px;" class="float-right hidden-xsd-none d-sm-block showopacity fas fa-list"></span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- Recibos -->
+    <li *ngIf="auth.loggedIn">
+      <a href="#recibosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+        <i class="fas fa-file-invoice-dollar"></i>
+        Recibos
+      </a>
+      <ul class="collapse list-unstyled" id="recibosSubmenu">
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" *ngIf="auth.loggedIn">
+          <a routerLink="/recibos/nuevo-registro" (click)="onSidenavClose()">
+            Crear Registro
+            <span style="font-size:16px;" class="float-right hidden-xsd-none d-sm-block showopacity fas fa-plus"></span>
+          </a>
+        </li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" *ngIf="auth.loggedIn">
+          <a routerLink="/recibos/listar-registros" (click)="onSidenavClose()">
+            Listar Registro
+            <span style="font-size:16px;" class="float-right hidden-xsd-none d-sm-block showopacity fas fa-list"></span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- Nominas -->
+    <li *ngIf="auth.loggedIn">
+      <a href="#nominasSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+        <i class="fas fa-file-signature"></i>
+        Nóminas
+      </a>
+      <ul class="collapse list-unstyled" id="nominasSubmenu">
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" *ngIf="auth.loggedIn">
+          <a routerLink="/nominas/nuevo-registro" (click)="onSidenavClose()">
+            Crear Registro
+            <span style="font-size:16px;" class="float-right hidden-xsd-none d-sm-block showopacity fas fa-plus"></span>
+          </a>
+        </li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" *ngIf="auth.loggedIn">
+          <a routerLink="/nominas/listar-registros" (click)="onSidenavClose()">
+            Listar Registro
+            <span style="font-size:16px;" class="float-right hidden-xsd-none d-sm-block showopacity fas fa-list"></span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- Compras -->
+    <li *ngIf="auth.loggedIn">
+      <a href="#comprasSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+        <i class="fas fa-shopping-cart"></i>
+        Compras
+      </a>
+      <ul class="collapse list-unstyled" id="comprasSubmenu">
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" *ngIf="auth.loggedIn">
+          <a routerLink="/compras/nuevo-registro" (click)="onSidenavClose()">
+            Crear Registro
+            <span style="font-size:16px;" class="float-right hidden-xsd-none d-sm-block showopacity fas fa-plus"></span>
+          </a>
+        </li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" *ngIf="auth.loggedIn">
+          <a routerLink="/compras/listar-registros" (click)="onSidenavClose()">
+            Listar Registro
+            <span style="font-size:16px;" class="float-right hidden-xsd-none d-sm-block showopacity fas fa-list"></span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- Ingresos -->
+    <li *ngIf="auth.loggedIn">
+      <a href="#ingresosSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+        <i class="fas fa-coins"></i>
+        Ingresos
+      </a>
+      <ul class="collapse list-unstyled" id="ingresosSubmenu">
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" *ngIf="auth.loggedIn">
+          <a routerLink="/ingresos/nuevo-registro" (click)="onSidenavClose()">
+            Crear Registro
+            <span style="font-size:16px;" class="float-right hidden-xsd-none d-sm-block showopacity fas fa-plus"></span>
+          </a>
+        </li>
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" *ngIf="auth.loggedIn">
+          <a routerLink="/ingresos/listar-registros" (click)="onSidenavClose()">
+            Listar Registro
+            <span style="font-size:16px;" class="float-right hidden-xsd-none d-sm-block showopacity fas fa-list"></span>
+          </a>
+        </li>
+      </ul>
+    </li>
+
+    <!-- Resumenes -->
+    <li *ngIf="auth.loggedIn">
+      <a href="#resumenesSubmenu" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle">
+        <i class="fas fa-coins"></i>
+        Resumenes
+      </a>
+      <ul class="collapse list-unstyled" id="resumenesSubmenu">
+        <li routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}" *ngIf="auth.loggedIn">
+          <a routerLink="/resumen" (click)="onSidenavClose()">
+            Ver Resumenes
+            <span style="font-size:16px;" class="float-right hidden-xsd-none d-sm-block showopacity fas fa-plus"></span>
+          </a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>

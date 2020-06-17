@@ -1,0 +1,45 @@
+<div class="row" *ngIf="hipoteca">
+  <div class="col-md-12">
+    <div class="form-group">
+      <label for="fecha">Fecha:</label>
+      <input type="date" class="form-control" [ngModel]="hipoteca.fecha | date:'yyyy-MM-dd'" name="fecha" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="tipo">Tipo de Pago:</label>
+      <input type="text" class="form-control" [ngModel]="hipoteca.tipo" name="tipo" disabled>
+    </div>
+
+    <div class="form-group" *ngIf="hipoteca.tipo == 'Amortizacion'">
+      <label for="amortizacion">Tipo de Amortizacion:</label>
+      <input type="text" class="form-control" [ngModel]="hipoteca.amortizacion" name="amortizacion" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="importe_total">Importe Total:</label>
+      <input type="number" class="form-control" [ngModel]="hipoteca.importe" name="importe" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="importe_capital">Importe de Capital:</label>
+      <input type="number" class="form-control" [ngModel]="hipoteca.importe_capital" name="importe_capital" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="importe_intereses">Importe de Intereses:</label>
+      <input type="number" class="form-control" [ngModel]="hipoteca.importe_intereses" name="importe_intereses" disabled>
+    </div>
+
+    <div class="row form-group col-md-12">
+      <a [routerLink]="['/hipotecas/editar-registros/', hipoteca._id]" class="btn btn-warning mx-auto">
+        Editar
+        <span class="fas fa-edit"></span>
+      </a>
+
+      <button class="btn btn-danger mx-auto" type="button" (click)="deleteRegistro()">
+        Eliminar
+        <span class="fas fa-trash-alt"></span>
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,57 @@
+<div class="row" *ngIf="recibo">
+  <div class="col-md-12">
+    <div class="form-group">
+      <label for="fecha">Fecha:</label>
+      <input disabled type="date" class="form-control" [ngModel]="recibo.fecha | date:'yyyy-MM-dd'" name="fecha">
+    </div>
+
+    <div class="form-group">
+      <label for="tipo">Tipo de Recibo:</label>
+      <input type="text" class="form-control" [ngModel]="recibo.tipo" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="importe">Importe:</label>
+      <input type="number" class="form-control" [ngModel]="recibo.importe" name="importe" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="consumo">Consumo:</label>
+      <input type="number" class="form-control" [ngModel]="recibo.consumo" name="consumo" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="periodo">Periodo:</label>
+      <input type="text" class="form-control" [ngModel]="recibo.periodo" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="periodo">Mes o meses a los que corresponde:</label>
+      <input type="text" class="form-control" [ngModel]="recibo.meses" [multiple]="true" disabled>
+    </div>
+
+
+
+    <div class="form-group">
+      <label for="ant_post">Periodo anterior o posterior a la emision de la factura:</label>
+      <input type="text" class="form-control" [ngModel]="recibo.ant_post" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="nota">Comentarios:</label>
+      <textarea type="text" class="form-control" [ngModel]="recibo.nota" name="nota" rows="6" disabled></textarea>
+    </div>
+  </div>
+
+  <div class="row form-group col-md-12">
+    <a [routerLink]="['/recibos/editar-registros/', recibo._id]" class="btn btn-warning mx-auto">
+      Editar
+      <span class="fas fa-edit"></span>
+    </a>
+
+    <button class="btn btn-danger mx-auto" type="button" (click)="deleteRegistro()">
+      Eliminar
+      <span class="fas fa-trash-alt"></span>
+    </button>
+  </div>
+</div>

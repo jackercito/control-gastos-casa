@@ -1,0 +1,53 @@
+<form (ngSubmit)="savedRegistro()" [formGroup]="registroFormGroup">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="fecha">Fecha:</label>
+        <input type="date" class="form-control" formControlName="fecha" name="fecha">
+        <div class="form-group alert centrar alert-danger alert-danger-no-combo" *ngIf="registroFormGroup.controls.fecha.errors?.required">
+          Campo obligatorio
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="importe">Importe:</label>
+        <input type="number" class="form-control" formControlName="importe" name="importe">
+        <div class="form-group alert centrar alert-danger alert-danger-no-combo" *ngIf="registroFormGroup.controls.importe.errors?.required">
+          Campo obligatorio
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="comentario">Comentarios:</label>
+        <textarea type="text" class="form-control" formControlName="comentario" name="comentario" rows="6"></textarea>
+        <div class="form-group alert centrar alert-danger alert-danger-no-combo" *ngIf="registroFormGroup.controls.comentario.errors?.required && registroFormGroup.controls.quien.touched">
+          Campo obligatorio
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="quien">Destinatario:</label>
+        <ng-select class="form-group" name="periodo" id="periodo" [formControl]="registroFormGroup.controls.quien">
+          <ng-option value="Comun" selected>Común</ng-option>
+          <ng-option value="Pablo" selected>Pablo</ng-option>
+          <ng-option value="Sandra" selected>Sandra</ng-option>
+        </ng-select>
+        <div class="form-group alert centrar alert-danger" *ngIf="registroFormGroup.controls.quien.errors?.required && registroFormGroup.controls.quien.touched">
+          Campo obligatorio
+        </div>
+      </div>
+
+      <div class="form-group input-group">
+        <mat-checkbox formControlName="igualarACero" name="igualarACero" class="mx-auto">&nbsp;&nbsp;Trasnferido</mat-checkbox>
+      </div>
+
+      <div class="row form-group">
+        <button type="submit" class="btn btn-success mx-auto" [disabled]="!registroFormGroup.valid">
+          Crear
+          <span class="fas fa-pencil-alt"></span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</form>

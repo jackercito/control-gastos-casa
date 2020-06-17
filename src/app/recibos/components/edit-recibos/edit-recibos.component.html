@@ -1,0 +1,96 @@
+<form (ngSubmit)="savedRegistro()" [formGroup]="registroFormGroup" *ngIf="id">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="fecha">Fecha:</label>
+        <input type="date" class="form-control" formControlName="fecha" name="fecha">
+        <div class="form-group alert centrar alert-danger alert-danger-no-combo" *ngIf="registroFormGroup.controls.fecha.errors?.required">
+          Campo obligatorio
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="tipo">Tipo de Recibo:</label>
+        <ng-select class="form-group" name="tipo" id="tipo" [formControl]="registroFormGroup.controls.tipo">
+          <ng-option value="Luz" selected>Luz</ng-option>
+          <ng-option value="Gas" selected>Gas</ng-option>
+          <ng-option value="Agua" selected>Agua</ng-option>
+          <ng-option value="Comunidad" selected>Comunidad</ng-option>
+          <ng-option value="IBI" selected>IBI</ng-option>
+          <ng-option value="Seguro de Hogar" selected>Seguro de Hogar</ng-option>
+          <ng-option value="Otros" selected>Otros</ng-option>
+        </ng-select>
+        <div class="form-group alert centrar alert-danger" *ngIf="registroFormGroup.controls.tipo.errors?.required && registroFormGroup.controls.tipo.touched">
+          Campo obligatorio
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="importe">Importe:</label>
+        <input type="number" class="form-control" formControlName="importe" name="importe">
+        <div class="form-group alert centrar alert-danger alert-danger-no-combo" *ngIf="registroFormGroup.controls.importe.errors?.required">
+          Campo obligatorio
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="consumo">Consumo:</label>
+        <input type="number" class="form-control" formControlName="consumo" name="consumo">
+      </div>
+
+      <div class="form-group">
+        <label for="periodo">Periodo:</label>
+        <ng-select class="form-group" name="periodo" id="periodo" [formControl]="registroFormGroup.controls.periodo">
+          <ng-option value="Mensual" selected>Mensual</ng-option>
+          <ng-option value="Bimensual" selected>Bimensual</ng-option>
+          <ng-option value="Trimestral" selected>Trimestral</ng-option>
+          <ng-option value="Cuatrimestral" selected>Cuatrimestral</ng-option>
+          <ng-option value="Semestral" selected>Semestral</ng-option>
+          <ng-option value="Anual" selected>Anual</ng-option>
+          <ng-option value="Unico" selected>Único</ng-option>
+        </ng-select>
+      </div>
+
+      <div class="form-group">
+        <label for="periodo">Mes o meses a los que corresponde:</label>
+        <ng-select class="form-group" name="periodo" id="periodo" [formControl]="registroFormGroup.controls.meses" [multiple]="true">
+          <ng-option value="Enero">Enero</ng-option>
+          <ng-option value="Febrero">Febrero</ng-option>
+          <ng-option value="Marzo">Marzo</ng-option>
+          <ng-option value="Abril">Abril</ng-option>
+          <ng-option value="Mayo">Mayo</ng-option>
+          <ng-option value="Junio">Junio</ng-option>
+          <ng-option value="Julio">Julio</ng-option>
+          <ng-option value="Agosto">Agosto</ng-option>
+          <ng-option value="Septiembre">Septiembre</ng-option>
+          <ng-option value="Octubre">Octubre</ng-option>
+          <ng-option value="Noviembre">Noviembre</ng-option>
+          <ng-option value="Diciembre">Diciembre</ng-option>
+        </ng-select>
+      </div>
+
+
+
+      <div class="form-group">
+        <label for="ant_post">Periodo anterior o posterior a la emision de la factura:</label>
+        <ng-select class="form-group" name="ant_post" id="ant_post" [formControl]="registroFormGroup.controls.ant_post">
+          <ng-option value="Anterior" selected>Anterior</ng-option>
+          <ng-option value="Posterior" selected>Posterior</ng-option>
+        </ng-select>
+      </div>
+
+      <div class="form-group">
+        <label for="nota">Comentarios:</label>
+        <textarea type="text" class="form-control" formControlName="nota" name="nota" rows="6"></textarea>
+      </div>
+
+      <div class="row form-group">
+        <button type="submit" class="btn btn-success mx-auto" [disabled]="!registroFormGroup.valid">
+          Guardar
+          <span class="fas fa-pencil-alt"></span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</form>

@@ -1,0 +1,58 @@
+<form (ngSubmit)="savedRegistro()" [formGroup]="registroFormGroup">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="fecha">Fecha:</label>
+        <input type="date" class="form-control" formControlName="fecha" name="fecha">
+        <div class="form-group alert centrar alert-danger alert-danger-no-combo" *ngIf="registroFormGroup.controls.fecha.errors?.required">
+          Campo obligatorio
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="tipo">Tipo de Pago:</label>
+        <ng-select class="form-group" name="tipo" id="tipo" [formControl]="registroFormGroup.controls.tipo">
+          <ng-option value="Mensualidad" selected>Mensualidad</ng-option>
+          <ng-option value="Amortizacion" selected>Amortizacion</ng-option>
+        </ng-select>
+        <div class="form-group alert centrar alert-danger" *ngIf="registroFormGroup.controls.tipo.errors?.required && registroFormGroup.controls.tipo.touched">
+          Campo obligatorio
+        </div>
+      </div>
+
+      <div class="form-group" *ngIf="registroFormGroup.controls.tipo.value == 'Amortizacion'">
+        <label for="amortizacion">Tipo de Amortizacion:</label>
+        <ng-select class="form-group" name="amortizacion" id="amortizacion" [formControl]="registroFormGroup.controls.amortizacion">
+          <ng-option value="Cuota" selected>Variando cuota con actual vencimiento</ng-option>
+          <ng-option value="Vencimiento" selected>Variando el vencimiento</ng-option>
+        </ng-select>
+      </div>
+
+      <div class="form-group">
+        <label for="importe_total">Importe Total:</label>
+        <input type="number" class="form-control" formControlName="importe_total" name="importe_total">
+        <div class="form-group alert centrar alert-danger alert-danger-no-combo" *ngIf="registroFormGroup.controls.importe_total.errors?.required">
+          Campo obligatorio
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="importe_capital">Importe de Capital:</label>
+        <input type="number" class="form-control" formControlName="importe_capital" name="importe_capital">
+      </div>
+
+      <div class="form-group">
+        <label for="importe_intereses">Importe de Intereses:</label>
+        <input type="number" class="form-control" formControlName="importe_intereses" name="importe_intereses">
+      </div>
+
+      <div class="row form-group">
+        <button type="submit" class="btn btn-success mx-auto" [disabled]="!registroFormGroup.valid">
+          Guardar
+          <span class="fas fa-pencil-alt"></span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</form>

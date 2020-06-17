@@ -1,0 +1,46 @@
+<div class="row" *ngIf="nomina">
+  <div class="col-md-12">
+    <div class="form-group">
+      <label for="fecha">Fecha:</label>
+      <input type="date" class="form-control" [ngModel]="nomina.fecha | date:'yyyy-MM-dd'" name="fecha" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="mes">Mes:</label>
+      <input type="text" class="form-control" [ngModel]="nomina.mes" name="mes" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="quien">Persona:</label>
+      <input type="text" class="form-control" [ngModel]="nomina.quien" name="quien" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="importe">Importe ingresado:</label>
+      <input type="number" class="form-control" [ngModel]="nomina.ingresado" name="ingresado" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="importe">Importe sacado:</label>
+      <input type="number" class="form-control" [ngModel]="nomina.sacado" name="sacado" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="comentario">Comentarios:</label>
+      <textarea type="text" class="form-control" [ngModel]="nomina.comentario" name="comentario" rows="6" disabled></textarea>
+    </div>
+
+    <div class="row form-group col-md-12">
+      <a [routerLink]="['/nominas/editar-registros/', nomina._id]" class="btn btn-warning mx-auto">
+        Editar
+        <span class="fas fa-edit"></span>
+      </a>
+
+      <button class="btn btn-danger mx-auto" type="button" (click)="deleteRegistro()">
+        Eliminar
+        <span class="fas fa-trash-alt"></span>
+      </button>
+    </div>
+
+  </div>
+</div>

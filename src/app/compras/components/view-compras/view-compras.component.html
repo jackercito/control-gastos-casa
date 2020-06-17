@@ -1,0 +1,40 @@
+<div class="row" *ngIf="compras">
+  <div class="col-md-12">
+    <div class="form-group">
+      <label for="fecha">Fecha:</label>
+      <input type="date" class="form-control" [ngModel]="compras.fecha | date:'yyyy-MM-dd'" name="fecha" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="importe">Importe:</label>
+      <input type="number" class="form-control" [ngModel]="compras.importe" name="importe" disabled>
+    </div>
+
+    <div class="form-group">
+      <label for="comentario">Comentarios:</label>
+      <textarea type="text" class="form-control" [ngModel]="compras.comentario" name="comentario" rows="6" disabled></textarea>
+    </div>
+
+    <div class="form-group">
+      <label for="quien">Destinatario:</label>
+      <input type="number" class="form-control" [ngModel]="compras.quien" name="quien" disabled>
+    </div>
+
+    <div class="form-group input-group" *ngIf="compras.quien != 'Comun'">
+      <mat-checkbox [ngModel]="compras.igualarACero" name="igualarACero" class="mx-auto" disabled>&nbsp;&nbsp;Trasnferido</mat-checkbox>
+    </div>
+
+    <div class="row form-group col-md-12">
+      <a [routerLink]="['/compras/editar-registros/', compras._id]" class="btn btn-warning mx-auto">
+        Editar
+        <span class="fas fa-edit"></span>
+      </a>
+
+      <button class="btn btn-danger mx-auto" type="button" (click)="deleteRegistro()">
+        Eliminar
+        <span class="fas fa-trash-alt"></span>
+      </button>
+    </div>
+
+  </div>
+</div>

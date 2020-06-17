@@ -1,0 +1,71 @@
+<form (ngSubmit)="savedRegistro()" [formGroup]="registroFormGroup">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="fecha">Fecha:</label>
+        <input type="date" class="form-control" formControlName="fecha" name="fecha">
+        <div class="form-group alert centrar alert-danger alert-danger-no-combo" *ngIf="registroFormGroup.controls.fecha.errors?.required">
+          Campo obligatorio
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="periodo">Mes al que corresponde:</label>
+        <ng-select class="form-group" name="mes" id="mes" [formControl]="registroFormGroup.controls.mes" [multiple]="false">
+          <ng-option value="Enero">Enero</ng-option>
+          <ng-option value="Febrero">Febrero</ng-option>
+          <ng-option value="Marzo">Marzo</ng-option>
+          <ng-option value="Abril">Abril</ng-option>
+          <ng-option value="Mayo">Mayo</ng-option>
+          <ng-option value="Junio">Junio</ng-option>
+          <ng-option value="Julio">Julio</ng-option>
+          <ng-option value="Agosto">Agosto</ng-option>
+          <ng-option value="Septiembre">Septiembre</ng-option>
+          <ng-option value="Octubre">Octubre</ng-option>
+          <ng-option value="Noviembre">Noviembre</ng-option>
+          <ng-option value="Diciembre">Diciembre</ng-option>
+        </ng-select>
+      </div>
+
+      <div class="form-group">
+        <label for="quien">Persona:</label>
+        <ng-select class="form-group" name="quien" id="quien" [formControl]="registroFormGroup.controls.quien">
+          <ng-option value="Sandra" selected>Sandra</ng-option>
+          <ng-option value="Pablo" selected>Pablo</ng-option>
+        </ng-select>
+        <div class="form-group alert centrar alert-danger" *ngIf="registroFormGroup.controls.quien.errors?.required && registroFormGroup.controls.quien.touched">
+          Campo obligatorio
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="importe">Importe ingresado:</label>
+        <input type="number" class="form-control" formControlName="ingresado" name="ingresado">
+        <div class="form-group alert centrar alert-danger alert-danger-no-combo" *ngIf="registroFormGroup.controls.ingresado.errors?.required">
+          Campo obligatorio
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="importe">Importe sacado:</label>
+        <input type="number" class="form-control" formControlName="sacado" name="sacado">
+        <div class="form-group alert centrar alert-danger alert-danger-no-combo" *ngIf="registroFormGroup.controls.sacado.errors?.required">
+          Campo obligatorio
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="comentario">Comentarios:</label>
+        <textarea type="text" class="form-control" formControlName="comentario" name="comentario" rows="6"></textarea>
+      </div>
+
+      <div class="row form-group">
+        <button type="submit" class="btn btn-success mx-auto" [disabled]="!registroFormGroup.valid">
+          Crear
+          <span class="fas fa-pencil-alt"></span>
+        </button>
+      </div>
+
+    </div>
+  </div>
+</form>
