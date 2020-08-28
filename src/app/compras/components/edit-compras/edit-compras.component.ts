@@ -70,7 +70,7 @@ export class EditComprasComponent implements OnInit {
   }
 
   private _guardarRegistro(registro: Compras) {
-    this.compraSubscription = this.apiCompras.setCompras$(registro).subscribe(
+    this.compraSubscription = this.apiCompras.putCompras$(registro).subscribe(
       data => {
         this.openSnackBar("Registro guardado con exito")
         this.router.navigate([`/recibos/ver-registros/${data['_id']}`])
