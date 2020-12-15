@@ -9,6 +9,6 @@ const PORT = process.env.MONGO_PORT;
 
 //Conexion a la base de datos
 mongoose.Promise = global.Promise;
-mongoose.connect(`mongodb://${USER}:${PASSWORD}@${SERVER}:${PORT}/${DB}`, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(`mongodb+srv://${USER}:${PASSWORD}@${SERVER}`, { useNewUrlParser: true, useUnifiedTopology: true });
 
 exports.mongoose = mongoose;
